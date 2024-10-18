@@ -1,10 +1,14 @@
 package main
 
-import "net/http"
+import (
+	"log"
+	"net/http"
+)
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Deployed v1"))
+		log.Println("Received request")
+		w.Write([]byte("Deployed v2"))
 	})
 
 	http.ListenAndServe(":8080", nil)
